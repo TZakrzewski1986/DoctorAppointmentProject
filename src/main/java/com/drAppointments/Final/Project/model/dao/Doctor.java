@@ -1,5 +1,8 @@
 package com.drAppointments.Final.Project.model.dao;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Doctor extends UserDao {
 
     private int pesel;

@@ -1,9 +1,16 @@
 package com.drAppointments.Final.Project.model.dao;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class Doctor extends UserDao {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private String pesel;
     private String gender;
@@ -11,6 +18,16 @@ public class Doctor extends UserDao {
     private String medicalSpecialization;
     private String phone;
     private String email;
+
+    @Override
+    public Long getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getPesel() {
         return pesel;

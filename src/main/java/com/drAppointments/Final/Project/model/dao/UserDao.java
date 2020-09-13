@@ -1,15 +1,12 @@
 package com.drAppointments.Final.Project.model.dao;
 
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 import javax.persistence.*;
 
-@Entity
-@Inheritance
+
+@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 public abstract class UserDao {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String surname;

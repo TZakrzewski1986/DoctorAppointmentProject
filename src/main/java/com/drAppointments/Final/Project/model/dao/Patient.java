@@ -1,22 +1,21 @@
 package com.drAppointments.Final.Project.model.dao;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
 
 @Entity
 public class Patient extends UserDao {
 
-    private int pesel;
+    private String pesel;
     private String gender;
     private String city;
-    private int phone;
+    private String phone;
     private String email;
 
-    public int getPesel() {
+    public String getPesel() {
         return pesel;
     }
 
-    public void setPesel(int pesel) {
+    public void setPesel(String pesel) {
         this.pesel = pesel;
     }
 
@@ -36,11 +35,11 @@ public class Patient extends UserDao {
         this.city = city;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

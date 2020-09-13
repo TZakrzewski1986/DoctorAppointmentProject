@@ -5,18 +5,18 @@ import javax.persistence.Entity;
 @Entity
 public class Doctor extends UserDao {
 
-    private int pesel;
+    private String pesel;
     private String gender;
     private String city;
-    private String medicacilSpecialization;
-    private int phone;
+    private String medicalSpecialization;
+    private String phone;
     private String email;
 
-    public int getPesel() {
+    public String getPesel() {
         return pesel;
     }
 
-    public void setPesel(int pesel) {
+    public void setPesel(String pesel) {
         this.pesel = pesel;
     }
 
@@ -36,19 +36,19 @@ public class Doctor extends UserDao {
         this.city = city;
     }
 
-    public String getMedicacilSpecialization() {
-        return medicacilSpecialization;
+    public String getMedicalSpecialization() {
+        return medicalSpecialization;
     }
 
-    public void setMedicacilSpecialization(String medicacilSpecialization) {
-        this.medicacilSpecialization = medicacilSpecialization;
+    public void setMedicalSpecialization(String medicacilSpecialization) {
+        this.medicalSpecialization = medicacilSpecialization;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

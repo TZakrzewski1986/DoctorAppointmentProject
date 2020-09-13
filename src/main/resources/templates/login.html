@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link type="text/css" rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<body style="text-align: center">
+
+<!--@{/login-process} to jest loginProcessingUrl bez @ i nawiasów klamrowych-->
+<form th:action="@{/login-process}" method="post">
+    <!--    name="login" to jest userNameParameter-->
+    <label for="inputLogin">Login:</label>
+    <input id="inputLogin" type="text" placeholder="Your login" th:required="required" name="login"/>
+
+    <label for="inputPassword">Password:</label>
+    <input id="inputPassword" type="text" th:required="required" name="password"/>
+
+    <button class="btn-primary" style="margin: 5px; padding: 5px; border-radius: 5px 5px 5px 5px;" type="submit">
+        Log in!
+    </button>
+</form>
+
+</body>
+</html>

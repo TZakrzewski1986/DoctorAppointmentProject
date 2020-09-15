@@ -4,6 +4,7 @@ package com.drAppointments.Final.Project.service;
 //import com.sda.mvc.model.dto.UserDto;
 //import com.sda.mvc.model.dto.UserSecDto;
 
+import com.drAppointments.Final.Project.model.dao.Patient;
 import com.drAppointments.Final.Project.model.dao.UserDao;
 import com.drAppointments.Final.Project.repository.UserRepository;
 import org.modelmapper.ModelMapper;
@@ -25,9 +26,11 @@ public class UserService {
 
     private PasswordEncoder passwordEncoder;
 
-    public UserService(UserRepository userRepository, ModelMapper modelMapper, PasswordEncoder passwordEncoder) {
-        this.modelMapper = modelMapper;
+    public UserService(UserRepository userRepository,
+                       ModelMapper modelMapper,
+                       PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.modelMapper = modelMapper;
         this.passwordEncoder = passwordEncoder;
     }
 
@@ -40,5 +43,11 @@ public class UserService {
         return userByLogin
                 .map(userDao -> userDao.getName() + " " + userDao.getSurname())
                 .orElse(login);
+    }
+
+    public void addNewUser(UserDao user) {
+        UserDao userDao = modelMapper.map(user, UserDao.class);
+        userDao.setPassword(passwordEncoder.encode(user.getPassword()));
+        userRepository.save(userDao);
     }
 }

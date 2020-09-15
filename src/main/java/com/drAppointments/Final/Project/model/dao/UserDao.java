@@ -3,10 +3,10 @@ package com.drAppointments.Final.Project.model.dao;
 
 import javax.persistence.*;
 
+@Entity
+public class UserDao {
 
-@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
-public abstract class UserDao {
-
+    @Id
     private Long id;
     private String name;
     private String surname;

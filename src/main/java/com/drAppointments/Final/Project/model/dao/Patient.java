@@ -1,5 +1,7 @@
 package com.drAppointments.Final.Project.model.dao;
 
+import com.drAppointments.Final.Project.model.dao.UserDao;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

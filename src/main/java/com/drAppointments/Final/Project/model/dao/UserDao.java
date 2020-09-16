@@ -3,15 +3,23 @@ package com.drAppointments.Final.Project.model.dao;
 
 import javax.persistence.*;
 
+@Inheritance
 @Entity
 public class UserDao {
 
     @Id
-    private Long id;
-    private String name;
-    private String surname;
-    private String login;
-    private String password;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
+
+    String name;
+    String surname;
+    String pesel;
+    String gender;
+    String city;
+    String phone;
+    String email;
+    String login;
+    String password;
 
     public Long getId() {
         return id;
@@ -35,6 +43,46 @@ public class UserDao {
 
     public void setSurname(String surname) {
         this.surname = surname;
+    }
+
+    public String getPesel() {
+        return pesel;
+    }
+
+    public void setPesel(String pesel) {
+        this.pesel = pesel;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getLogin() {

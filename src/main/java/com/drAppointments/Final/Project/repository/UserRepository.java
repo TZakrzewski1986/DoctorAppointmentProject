@@ -1,5 +1,6 @@
 package com.drAppointments.Final.Project.repository;
 
+import com.drAppointments.Final.Project.model.dao.PatientDao;
 import com.drAppointments.Final.Project.model.dao.UserDao;
 
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -23,5 +23,6 @@ public class IndexController {
     public String getLoginView() {
         return "login";
     }
+
 }
 

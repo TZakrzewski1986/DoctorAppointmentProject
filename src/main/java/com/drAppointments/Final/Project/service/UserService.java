@@ -4,7 +4,9 @@ package com.drAppointments.Final.Project.service;
 //import com.sda.mvc.model.dto.UserDto;
 //import com.sda.mvc.model.dto.UserSecDto;
 
-import com.drAppointments.Final.Project.model.dao.Patient;
+import com.drAppointments.Final.Project.model.dao.AdminDao;
+import com.drAppointments.Final.Project.model.dao.DoctorDao;
+import com.drAppointments.Final.Project.model.dao.PatientDao;
 import com.drAppointments.Final.Project.model.dao.UserDao;
 import com.drAppointments.Final.Project.repository.UserRepository;
 import org.modelmapper.ModelMapper;
@@ -12,10 +14,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class UserService {
@@ -45,9 +44,21 @@ public class UserService {
                 .orElse(login);
     }
 
-    public void addNewUser(UserDao user) {
-        UserDao userDao = modelMapper.map(user, UserDao.class);
-        userDao.setPassword(passwordEncoder.encode(user.getPassword()));
-        userRepository.save(userDao);
+    public void addNewPatient(PatientDao user) {
+        PatientDao patientDao = modelMapper.map(user, PatientDao.class);
+        patientDao.setPassword(passwordEncoder.encode(user.getPassword()));
+        userRepository.save(patientDao);
+    }
+
+    public void addNewDoctor(DoctorDao user) {
+        DoctorDao doctorDao = modelMapper.map(user, DoctorDao.class);
+        doctorDao.setPassword(passwordEncoder.encode(user.getPassword()));
+        userRepository.save(doctorDao);
+    }
+
+    public void addNewAdmin(AdminDao user) {
+        AdminDao adminDao = modelMapper.map(user, AdminDao.class);
+        adminDao.setPassword(passwordEncoder.encode(user.getPassword()));
+        userRepository.save(adminDao);
     }
 }

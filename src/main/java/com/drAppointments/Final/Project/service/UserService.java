@@ -7,8 +7,9 @@ package com.drAppointments.Final.Project.service;
 import com.drAppointments.Final.Project.model.dao.AdminDao;
 import com.drAppointments.Final.Project.model.dao.DoctorDao;
 import com.drAppointments.Final.Project.model.dao.PatientDao;
-import com.drAppointments.Final.Project.model.dao.UserDao;
-import com.drAppointments.Final.Project.repository.UserRepository;
+import com.drAppointments.Final.Project.repository.AdminRepository;
+import com.drAppointments.Final.Project.repository.DoctorRepository;
+import com.drAppointments.Final.Project.repository.PatientRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -19,46 +20,50 @@ import java.util.Optional;
 @Service
 public class UserService {
 
-    private UserRepository userRepository;
+    private AdminRepository adminRepository;
+    private DoctorRepository doctorRepository;
+    private PatientRepository patientRepository;
 
     private ModelMapper modelMapper;
 
     private PasswordEncoder passwordEncoder;
 
-    public UserService(UserRepository userRepository,
-                       ModelMapper modelMapper,
-                       PasswordEncoder passwordEncoder) {
-        this.userRepository = userRepository;
+    public UserService(AdminRepository adminRepository,
+                       DoctorRepository doctorRepository, PatientRepository patientRepository,
+                       ModelMapper modelMapper, PasswordEncoder passwordEncoder) {
+        this.adminRepository = adminRepository;
+        this.doctorRepository = doctorRepository;
+        this.patientRepository = patientRepository;
         this.modelMapper = modelMapper;
         this.passwordEncoder = passwordEncoder;
     }
 
-    public String getNameAndSurnameLoggedUser() {
+    public String getNameAndSurnameLoggedAdmin() {
 
         String login = SecurityContextHolder.getContext().getAuthentication().getName();
 
-        Optional<UserDao> userByLogin = userRepository.getUserByLogin(login);
+        Optional<AdminDao> adminByLogin = adminRepository.getAdminByLogin(login);
 
-        return userByLogin
-                .map(userDao -> userDao.getName() + " " + userDao.getSurname())
+        return adminByLogin
+                .map(adminDao -> adminDao.getName() + " " + adminDao.getSurname())
                 .orElse(login);
     }
 
     public void addNewPatient(PatientDao user) {
         PatientDao patientDao = modelMapper.map(user, PatientDao.class);
         patientDao.setPassword(passwordEncoder.encode(user.getPassword()));
-        userRepository.save(patientDao);
+        patientRepository.save(patientDao);
     }
 
     public void addNewDoctor(DoctorDao user) {
         DoctorDao doctorDao = modelMapper.map(user, DoctorDao.class);
         doctorDao.setPassword(passwordEncoder.encode(user.getPassword()));
-        userRepository.save(doctorDao);
+        doctorRepository.save(doctorDao);
     }
 
     public void addNewAdmin(AdminDao user) {
         AdminDao adminDao = modelMapper.map(user, AdminDao.class);
         adminDao.setPassword(passwordEncoder.encode(user.getPassword()));
-        userRepository.save(adminDao);
+        adminRepository.save(adminDao);
     }
 }

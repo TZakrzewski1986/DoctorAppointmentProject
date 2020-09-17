@@ -15,7 +15,7 @@ public class IndexController {
     @GetMapping("/index")
     public ModelAndView getIndexView() {
 
-        return new ModelAndView("index", "user", userService.getNameAndSurnameLoggedUser());
+        return new ModelAndView("index", "user", userService.getNameAndSurnameLoggedAdmin());
 
     }
 

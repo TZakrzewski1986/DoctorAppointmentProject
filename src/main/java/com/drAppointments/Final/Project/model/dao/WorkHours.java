@@ -8,25 +8,25 @@ public class WorkHours {
 
     private final int appointmentDuration = 30;
 
-    public WorkHours(LocalTime start, LocalTime finish) {
-        this.start = start;
-        this.finish = finish;
+    public WorkHours(int startHours, int startMinutes, int finishHours, int finishMinutes) {
+        start = LocalTime.of(startHours, startMinutes);
+        finish = LocalTime.of(finishHours, finishMinutes);
     }
 
     public LocalTime getStart() {
         return start;
     }
 
-    public void setStart(LocalTime start) {
-        this.start = start;
+    public void setStart(int startHours, int startMinutes) {
+        start = LocalTime.of(startHours, startMinutes);
     }
 
     public LocalTime getFinish() {
         return finish;
     }
 
-    public void setFinish(LocalTime finish) {
-        this.finish = finish;
+    public void setFinish(int finishHours, int finishMinutes) {
+        finish = LocalTime.of(finishHours, finishMinutes);
     }
 
     public int getAppointmentDuration() {

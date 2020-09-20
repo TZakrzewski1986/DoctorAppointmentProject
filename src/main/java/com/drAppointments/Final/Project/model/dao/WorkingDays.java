@@ -9,14 +9,65 @@ public class WorkingDays {
     private WorkHours sat;
     private WorkHours sun;
 
-    public WorkingDays(WorkHours mon, WorkHours tue, WorkHours wed, WorkHours thu, WorkHours fri, WorkHours sat, WorkHours sun) {
-        this.mon = mon;
-        this.tue = tue;
-        this.wed = wed;
-        this.thu = thu;
-        this.fri = fri;
-        this.sat = sat;
-        this.sun = sun;
+    public static final class WorkingDaysBuilder{
+        private WorkHours mon;
+        private WorkHours tue;
+        private WorkHours wed;
+        private WorkHours thu;
+        private WorkHours fri;
+        private WorkHours sat;
+        private WorkHours sun;
+
+        public static WorkingDaysBuilder WorkingDays() {
+            return new WorkingDaysBuilder();
+        }
+
+        public WorkingDaysBuilder monHours(int startHours, int finishHours){
+            this.mon = new WorkHours(startHours, finishHours);
+            return this;
+        }
+
+        public WorkingDaysBuilder tueHours(int startHours, int finishHours){
+            this.tue = new WorkHours(startHours, finishHours);
+            return this;
+        }
+
+        public WorkingDaysBuilder wedHours(int startHours, int finishHours){
+            this.wed = new WorkHours(startHours, finishHours);
+            return this;
+        }
+
+        public WorkingDaysBuilder thuHours(int startHours, int finishHours){
+            this.thu = new WorkHours(startHours, finishHours);
+            return this;
+        }
+
+        public WorkingDaysBuilder friHours(int startHours, int finishHours){
+            this.fri = new WorkHours(startHours, finishHours);
+            return this;
+        }
+
+        public WorkingDaysBuilder satHours(int startHours, int finishHours){
+            this.sat = new WorkHours(startHours, finishHours);
+            return this;
+        }
+
+        public WorkingDaysBuilder sunHours(int startHours, int finishHours){
+            this.sun = new WorkHours(startHours, finishHours);
+            return this;
+        }
+
+        public WorkingDays build(){
+            WorkingDays workingDays = new WorkingDays();
+            workingDays.mon = this.mon;
+            workingDays.tue = this.tue;
+            workingDays.wed = this.wed;
+            workingDays.thu = this.thu;
+            workingDays.fri = this.fri;
+            workingDays.sat = this.sat;
+            workingDays.sun = this.sun;
+            return workingDays;
+        }
     }
 
     public WorkHours getMon() {

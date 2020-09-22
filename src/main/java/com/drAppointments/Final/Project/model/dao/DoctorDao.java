@@ -40,6 +40,9 @@ public class DoctorDao {
     @Column
     String password;
 
+    @OneToOne
+    private WorkingHours workingHours;
+
     public Long getId() {
         return id;
     }

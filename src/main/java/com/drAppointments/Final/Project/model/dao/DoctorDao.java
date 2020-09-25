@@ -25,8 +25,8 @@ public class DoctorDao {
     @Column
     String city;
 
-    @Column
-    String medicalSpecialization;
+    @OneToOne
+    SpecializationDao medicalSpecialization;
 
     @Column
     String phone;
@@ -91,11 +91,11 @@ public class DoctorDao {
         this.city = city;
     }
 
-    public String getMedicalSpecialization() {
+    public SpecializationDao getMedicalSpecialization() {
         return medicalSpecialization;
     }
 
-    public void setMedicalSpecialization(String medicalSpecialization) {
+    public void setMedicalSpecialization(SpecializationDao medicalSpecialization) {
         this.medicalSpecialization = medicalSpecialization;
     }
 
@@ -129,6 +129,14 @@ public class DoctorDao {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public WorkingHours getWorkingHours() {
+        return workingHours;
+    }
+
+    public void setWorkingHours(WorkingHours workingHours) {
+        this.workingHours = workingHours;
     }
 }
 

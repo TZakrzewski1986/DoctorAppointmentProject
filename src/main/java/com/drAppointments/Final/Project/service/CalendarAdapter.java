@@ -3,6 +3,7 @@ package com.drAppointments.Final.Project.service;
 import org.springframework.stereotype.Component;
 
 import java.text.DateFormatSymbols;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -65,5 +66,34 @@ public class CalendarAdapter {
 
     }
 
+    public List<LocalTime> listTime(int day, int monthNumber, int year) {
+        if (day == currentDay && monthNumber == currentMonth && year == currentYear
+                && currentTime.compareTo(LocalTime.of(21, 30)) < 0) {
+            int nextClosestIndex = 0;
+            List<LocalTime> timeList = createTimeList();
+            for (LocalTime time : timeList) {
+                Duration diff = Duration.between(currentTime, time);
+                if (diff.getSeconds() < 0) {
+                    nextClosestIndex = timeList.indexOf(time);
+                    break;
+                }
+            }
+            return timeList.subList(nextClosestIndex, timeList.size());
 
+        } else {
+            return createTimeList();
+        }
+    }
+
+    public List<LocalTime> createTimeList(){
+        LocalTime start = LocalTime.of(6,0);
+        List<LocalTime> timeList = new ArrayList<>();
+        timeList.add(start);
+        LocalTime nextApp = start;
+        for (int i = 0; i < 32; i++){
+            nextApp = nextApp.plusMinutes(30);
+            timeList.add(nextApp);
+        }
+        return timeList;
+    }
 }

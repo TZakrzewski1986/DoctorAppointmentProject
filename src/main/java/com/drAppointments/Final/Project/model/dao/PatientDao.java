@@ -5,22 +5,13 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "patients")
-public class PatientDao {
+@Table(name = "patient_dao")
+public class PatientDao extends UserSec{
 
     @Id
     @Column(name = "patient_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-
-    @Column
-    String login;
-
-    @Column
-    String password;
-
-    @Column
-    boolean enabled = true;
 
     @Column
     String name;
@@ -42,17 +33,6 @@ public class PatientDao {
 
     @Column
     String email;
-
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "patient_roles",
-            joinColumns = @JoinColumn(
-                    name = "patient_id"),
-            inverseJoinColumns = @JoinColumn(
-                    name = "role_id")
-    )
-
-    private Set<Role> roles = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -116,37 +96,5 @@ public class PatientDao {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public boolean isEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
-    }
-
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
-    }
-
-    public Set<Role> getRoles() {
-        return roles;
     }
 }

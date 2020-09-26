@@ -4,9 +4,11 @@ package com.drAppointments.Final.Project.model.dao;
 import javax.persistence.*;
 
 @Entity
-public class DoctorDao {
+@Table(name = "doctor_dao")
+public class DoctorDao extends UserSec {
 
     @Id
+    @Column(name = "doctor_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
@@ -25,23 +27,14 @@ public class DoctorDao {
     @Column
     String city;
 
-    @OneToOne
-    SpecializationDao medicalSpecialization;
+    @Column
+    String medicalSpecialization;
 
     @Column
     String phone;
 
     @Column
     String email;
-
-    @Column
-    String login;
-
-    @Column
-    String password;
-
-    @OneToOne
-    private WorkingHours workingHours;
 
     public Long getId() {
         return id;
@@ -91,11 +84,11 @@ public class DoctorDao {
         this.city = city;
     }
 
-    public SpecializationDao getMedicalSpecialization() {
+    public String getMedicalSpecialization() {
         return medicalSpecialization;
     }
 
-    public void setMedicalSpecialization(SpecializationDao medicalSpecialization) {
+    public void setMedicalSpecialization(String medicalSpecialization) {
         this.medicalSpecialization = medicalSpecialization;
     }
 
@@ -113,30 +106,6 @@ public class DoctorDao {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public WorkingHours getWorkingHours() {
-        return workingHours;
-    }
-
-    public void setWorkingHours(WorkingHours workingHours) {
-        this.workingHours = workingHours;
     }
 }
 

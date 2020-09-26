@@ -1,8 +1,7 @@
 package com.drAppointments.Final.Project.configuration;
 
 
-import com.drAppointments.Final.Project.service.MyPatientDetailsServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.drAppointments.Final.Project.service.UserDetailsServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -12,9 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
-import javax.sql.DataSource;
 
 @Configuration
 @EnableWebSecurity
@@ -22,7 +19,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public UserDetailsService userDetailsService() {
-        return new MyPatientDetailsServiceImpl();
+        return new UserDetailsServiceImpl();
     }  //Patient=User
 
     @Bean
@@ -47,11 +44,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers( "/patient").hasAuthority("PATIENT")
-                .antMatchers("/admin").hasAuthority("ADMIN")
+                .antMatchers( "/patient").hasRole("PATIENT")
+                .antMatchers("/admin").hasRole("ADMIN")
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()
+                .loginPage("/login")
+                .usernameParameter("login")
+                .loginProcessingUrl("/login-process")
+                .defaultSuccessUrl("/index")
                 .and()
                 .logout()
                 .and()

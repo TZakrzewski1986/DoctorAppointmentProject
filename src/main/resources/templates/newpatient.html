@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Rejestracja nowego pacjenta</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
 <body>
@@ -19,6 +20,13 @@
     <p>Login: <input type="text" th:field="*{login}"/></p>
     <p>Password: <input type="text" th:field="*{password}"/></p>
 
+<!--    Linia poniżej do testów, normalnie PaitentDao-->
+<!--    i DoctorDao nie będzie miał możliwości wybrania roli-->
+
+    <select name="role">
+        <option th:each="roleOpt : ${T(com.drAppointments.Final.Project.model.dao.Role).values()}"
+                th:value="${roleOpt}" th:text="${roleOpt}"></option>
+    </select>
     <button type="submit">Dodaj pacjenta</button>
 </form>
 

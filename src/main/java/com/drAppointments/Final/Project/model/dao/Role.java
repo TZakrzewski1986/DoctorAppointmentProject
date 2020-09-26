@@ -2,30 +2,30 @@ package com.drAppointments.Final.Project.model.dao;
 
 import javax.persistence.*;
 
-@Entity
 @Table(name = "roles")
-public class Role {
+public enum Role {
 
-    @Id
-    @Column(name = "role_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
-    private String name;
+    PATIENT("ROLE_PATIENT"),
+    DOCTOR("ROLE_DOCTOR"),
+    ADMIN("ROLE_ADMIN");
 
-    public Long getId() {
-        return id;
+    private String userRole;
+
+    public String getUserRole() {
+        return userRole;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setUserRole(String userRole) {
+        this.userRole = userRole;
+    }
+    private final String displayValue;
+
+    Role(String displayValue) {
+        this.displayValue = displayValue;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public String  getDisplayValue() {
+        return displayValue;
     }
 }

@@ -27,8 +27,8 @@ public class DoctorDao extends UserSec {
     @Column
     String city;
 
-    @Column
-    String medicalSpecialization;
+    @ManyToOne
+    SpecializationDao medicalSpecialization;
 
     @Column
     String phone;
@@ -84,11 +84,11 @@ public class DoctorDao extends UserSec {
         this.city = city;
     }
 
-    public String getMedicalSpecialization() {
+    public SpecializationDao getMedicalSpecialization() {
         return medicalSpecialization;
     }
 
-    public void setMedicalSpecialization(String medicalSpecialization) {
+    public void setMedicalSpecialization(SpecializationDao medicalSpecialization) {
         this.medicalSpecialization = medicalSpecialization;
     }
 

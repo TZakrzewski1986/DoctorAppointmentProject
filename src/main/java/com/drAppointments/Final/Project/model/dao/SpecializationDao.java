@@ -1,6 +1,7 @@
 package com.drAppointments.Final.Project.model.dao;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class SpecializationDao {
@@ -11,5 +12,8 @@ public class SpecializationDao {
 
     @Column
     private String specialization;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<DoctorDao> doctors;
 
 }

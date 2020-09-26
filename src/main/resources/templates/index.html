@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Przychodnia</title>
-
+`
     <link type="text/css" rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <style>
@@ -22,7 +22,7 @@
         <a class="active" href="/adddoctor">Rejestracja nowego lekarza</a>
         <a class="active" href="/addpatient">Rejestracja nowego pacjenta</a>
         <div class="login-container">
-            <form action="/action_page.php">
+            <form th:action="@{/login-process}" method="post">
                 <input type="text" placeholder="Username" name="username">
                 <input type="password" placeholder="Password" name="psw">
                 <button type="submit">Login</button>

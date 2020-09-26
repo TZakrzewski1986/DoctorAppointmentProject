@@ -33,11 +33,11 @@ public class CalendarAdapter {
     }
 
     public List<String> listMonths(int year) {
-        String[] allMonths = new DateFormatSymbols().getMonths();
+        String[] allMonths = new DateFormatSymbols().getShortMonths();
         if (year == currentYear) {
-            return new ArrayList<>(Arrays.asList(allMonths).subList(currentMonth - 1, 11));
+            return new ArrayList<>(Arrays.asList(allMonths).subList(currentMonth - 1, 12));
         } else {
-            return new ArrayList<>(Arrays.asList(allMonths));
+            return new ArrayList<>(Arrays.asList(allMonths).subList(0, 12));
         }
     }
 
@@ -51,14 +51,14 @@ public class CalendarAdapter {
 
     private int daysInMonth(int monthNumber, int year){
         List<Integer> longMonths = Arrays.asList(1,3,5,7,8,10,12);
-        List<Integer> shortMonths = Arrays.asList(2, 4, 6, 9, 11);
+        List<Integer> shortMonths = Arrays.asList(4, 6, 9, 11);
         if (longMonths.contains(monthNumber)){
             return 31;
         }
         if (shortMonths.contains(monthNumber)){
             return 30;
         }
-        if (year % 400 != 0 && year % 4 != 0){
+        if (monthNumber == 2 && year % 400 != 0 && year % 4 != 0){
             return 28;
         } else {
             return 29;
@@ -73,7 +73,7 @@ public class CalendarAdapter {
             List<LocalTime> timeList = createTimeList();
             for (LocalTime time : timeList) {
                 Duration diff = Duration.between(currentTime, time);
-                if (diff.getSeconds() < 0) {
+                if (diff.getSeconds() > 0) {
                     nextClosestIndex = timeList.indexOf(time);
                     break;
                 }
@@ -85,15 +85,35 @@ public class CalendarAdapter {
         }
     }
 
-    public List<LocalTime> createTimeList(){
+    private List<LocalTime> createTimeList(){
         LocalTime start = LocalTime.of(6,0);
         List<LocalTime> timeList = new ArrayList<>();
         timeList.add(start);
         LocalTime nextApp = start;
-        for (int i = 0; i < 32; i++){
+        for (int i = 0; i < 31; i++){
             nextApp = nextApp.plusMinutes(30);
             timeList.add(nextApp);
         }
         return timeList;
+    }
+
+    public int getCurrentYear() {
+        return currentYear;
+    }
+
+    public int getCurrentMonth() {
+        return currentMonth;
+    }
+
+    public int getCurrentDay() {
+        return currentDay;
+    }
+
+    public int getDayOfWeek() {
+        return dayOfWeek;
+    }
+
+    public LocalTime getCurrentTime() {
+        return currentTime;
     }
 }

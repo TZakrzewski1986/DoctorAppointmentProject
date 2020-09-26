@@ -26,7 +26,7 @@
     <select name="role">
         <option th:each="roleOpt : ${T(com.drAppointments.Final.Project.model.dao.Role).values()}"
                 th:value="${roleOpt}" th:text="${roleOpt}"></option>
-
+    </select>
     <button type="submit">Dodaj pacjenta</button>
 </form>
 

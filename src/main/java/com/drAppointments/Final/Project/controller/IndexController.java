@@ -24,5 +24,10 @@ public class IndexController {
         return "login";
     }
 
+    @GetMapping("/403")
+    public String getForbiddenView() {
+        return "403";
+    }
+
 }
 

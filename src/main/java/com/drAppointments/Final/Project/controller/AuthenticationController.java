@@ -19,8 +19,6 @@ public class AuthenticationController {
         modelAndView.setViewName("patient");
         return modelAndView;
     }
-    // można spróbować spróbować dodać value = "/index", i tam spróbować wszystko umieścić w indexie,
-    // chociaż jest to chyba mało optymalne
 
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public ModelAndView adminHome() {

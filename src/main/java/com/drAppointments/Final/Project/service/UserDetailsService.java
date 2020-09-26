@@ -1,40 +1,33 @@
 package com.drAppointments.Final.Project.service;
 
-import com.drAppointments.Final.Project.model.dao.PatientDao;
-import com.drAppointments.Final.Project.model.dao.Role;
+import com.drAppointments.Final.Project.model.dao.UserSec;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.*;
 
-public class MyPatientDetailsService implements UserDetails {
+public class UserDetailsService implements UserDetails {
 
-    private PatientDao patientDao;
+    private UserSec userSec;
 
-    public MyPatientDetailsService(PatientDao patientDao) {
-        this.patientDao = patientDao;
+    public UserDetailsService(UserSec userSec) {
+        this.userSec = userSec;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        Set<Role> roles = patientDao.getRoles();
-        List<SimpleGrantedAuthority> authorities = new ArrayList<>();
-
-        for (Role role : roles) {
-            authorities.add(new SimpleGrantedAuthority(role.getName()));
-        }
-        return authorities;
+        return Arrays.asList(new SimpleGrantedAuthority(userSec.getRole().getDisplayValue()));
     }
 
     @Override
     public String getPassword() {
-        return patientDao.getPassword();
+        return userSec.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return patientDao.getLogin();
+        return userSec.getLogin();
     }
 
     @Override
@@ -54,6 +47,6 @@ public class MyPatientDetailsService implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return patientDao.isEnabled();
+        return userSec.isEnabled();
     }
 }

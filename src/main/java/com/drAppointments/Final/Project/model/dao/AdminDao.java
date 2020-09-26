@@ -1,12 +1,10 @@
 package com.drAppointments.Final.Project.model.dao;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
-public class AdminDao {
+@Table(name = "admin_dao")
+public class AdminDao extends UserSec {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,8 +12,6 @@ public class AdminDao {
 
     String name;
     String surname;
-    String login;
-    String password;
 
     public Long getId() {
         return id;
@@ -39,21 +35,5 @@ public class AdminDao {
 
     public void setSurname(String surname) {
         this.surname = surname;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 }

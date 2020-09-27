@@ -21,10 +21,4 @@ public class SpringConfig {
     public CalendarAdapter calendarAdapter() {
         return new CalendarAdapter();
     }
-//    @Bean
-//    public PasswordEncoder passwordEncoder() {
-//        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
-//    }
-
-
 }

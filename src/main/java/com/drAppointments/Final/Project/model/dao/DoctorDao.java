@@ -2,6 +2,7 @@ package com.drAppointments.Final.Project.model.dao;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "doctor_dao")
@@ -35,6 +36,9 @@ public class DoctorDao extends UserSec {
 
     @Column
     String email;
+
+    @OneToMany
+    List<WorkDay> workingHours;
 
     public Long getId() {
         return id;
@@ -106,6 +110,14 @@ public class DoctorDao extends UserSec {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<WorkDay> getWorkingHours() {
+        return workingHours;
+    }
+
+    public void setWorkingHours(List<WorkDay> workingHours) {
+        this.workingHours = workingHours;
     }
 }
 

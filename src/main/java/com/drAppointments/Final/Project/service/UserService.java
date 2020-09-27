@@ -11,6 +11,7 @@ import com.drAppointments.Final.Project.repository.AdminRepository;
 import com.drAppointments.Final.Project.repository.DoctorRepository;
 import com.drAppointments.Final.Project.repository.PatientRepository;
 import org.modelmapper.ModelMapper;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -65,5 +66,10 @@ public class UserService {
         AdminDao adminDao = modelMapper.map(user, AdminDao.class);
         adminDao.setPassword(passwordEncoder.encode(user.getPassword()));
         adminRepository.save(adminDao);
+    }
+
+    @Scheduled(initialDelay = 10000L, fixedDelay = 10000L)
+    public void test(){
+        System.out.println("testing scheduling");
     }
 }

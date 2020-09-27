@@ -9,5 +9,8 @@ public class AppointmentProvider {
     @Autowired
     private SpecializationService specializationService;
 
+    @Autowired
+    private CalendarAdapter calendarAdapter;
+
 
 }

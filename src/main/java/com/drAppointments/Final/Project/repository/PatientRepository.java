@@ -18,4 +18,5 @@ public interface PatientRepository extends JpaRepository<PatientDao, Long> {
     List<PatientDao> getPatientsByNameAndSurname(@Param("name") String name, @Param("surname") String surname);
 
     List<PatientDao> findAll();
+
 }

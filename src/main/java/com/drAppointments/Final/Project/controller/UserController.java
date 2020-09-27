@@ -28,10 +28,7 @@ public class UserController {
     //dodanie poprzez stronę nowego pacjenta
     @PostMapping("/addpatient")
     public String addNewPatient(@ModelAttribute PatientDao user) {
-        System.out.println(user.getName() + " " + user.getSurname() + " " +
-                user.getPesel() + " " + user.getGender() + " " + user.getCity() + " " +
-                user.getPhone() + " " + user.getEmail() + " " + user.getLogin() + " " +
-                user.getPassword());
+        System.out.println(user.toString());
         userService.addNewPatient(user);
         return "redirect:index";
     }
@@ -45,10 +42,7 @@ public class UserController {
     //dodanie poprzez stronę nowego lekarza
     @PostMapping("/adddoctor")
     public String addNewDoctor(@ModelAttribute DoctorDao user) {
-        System.out.println(user.getName() + " " + user.getSurname() + " " +
-                user.getPesel() + " " + user.getGender() + " " + user.getMedicalSpecialization() + " " +
-                user.getCity() + " " + user.getPhone() + " " + user.getEmail() + " " + user.getLogin() + " " +
-                user.getPassword());
+        System.out.println(user.toString());
         userService.addNewDoctor(user);
         return "redirect:index";
     }
@@ -62,8 +56,7 @@ public class UserController {
     //dodanie poprzez stronę nowego admina
     @PostMapping("/addadmin")
     public String addNewAdmin(@ModelAttribute AdminDao user) {
-        System.out.println(user.getName() + " " + user.getSurname() + " " +
-                user.getLogin() + " " + user.getPassword());
+        System.out.println(user.toString());
         userService.addNewAdmin(user);
         return "redirect:index";
     }

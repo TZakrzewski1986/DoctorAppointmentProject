@@ -12,4 +12,7 @@ public interface DoctorRepository extends JpaRepository<DoctorDao, Long> {
 
     Optional<PatientDao> getDoctorByLogin(@Param("login") String login);
 
+    List<DoctorDao> getDoctorByMedicalSpecialization(String medSpec);
+
+    Optional<DoctorDao> getDoctorByNameAndSurname(String name, String surname);
 }

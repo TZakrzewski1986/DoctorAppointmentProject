@@ -26,5 +26,10 @@ public class AuthenticationController {
         modelAndView.setViewName("admin");
         return modelAndView;
     }
-
+    @RequestMapping(value = "/doctor", method = RequestMethod.GET)
+    public ModelAndView doctorHome() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("doctor");
+        return modelAndView;
 }
+    }

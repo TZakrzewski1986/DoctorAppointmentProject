@@ -9,17 +9,20 @@
 
 </head>
 <body>
+<h1>Imię i nazwiska zalogowanego użytkownika <p th:text="${patient}"></p> </h1>
 
-<!--Linia poniżej rozszerza dostęp o wszystkich zalogowanych użytkowników-->
-<!--<div sec:authorize="isAuthenticated()">-->
-<div sec:authorize="hasRole('PATIENT')">
-    <div sec:authentication="principal.authorities"></div>
+<h2>
+    <!--Linia poniżej rozszerza dostęp o wszystkich zalogowanych użytkowników-->
+    <!--<div sec:authorize="isAuthenticated()">-->
+    <div sec:authorize="hasRole('PATIENT')">
+        <div sec:authentication="principal.authorities"></div>
+        Witaj użytkowniku o loginie
+        <h2 th:line="text">[[${#httpServletRequest.remoteUser}]]!</h2>
+    </div>
+</h2>
 
-    Welcome to Patient Page
-    <h1 th:line="text"> Hello [[${#httpServletRequest.remoteUser}]]!</h1>
-    &nbsp;
 
-</div>
+
 
 <form th:action="@{/logout}" action="@{/logout}" method="post">
     <input type="submit" value="Log Out"/>

@@ -49,12 +49,6 @@ public class UserService {
                 .orElse(login);
     }
 
-    public void addNewPatient(PatientDao user) {
-        PatientDao patientDao = modelMapper.map(user, PatientDao.class);
-        patientDao.setPassword(passwordEncoder.encode(user.getPassword()));
-        patientRepository.save(patientDao);
-    }
-
     public void addNewDoctor(DoctorDao user) {
         DoctorDao doctorDao = modelMapper.map(user, DoctorDao.class);
         doctorDao.setPassword(passwordEncoder.encode(user.getPassword()));

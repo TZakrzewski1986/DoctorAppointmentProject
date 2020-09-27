@@ -3,6 +3,7 @@ package com.drAppointments.Final.Project.controller;
 import com.drAppointments.Final.Project.model.dao.AdminDao;
 import com.drAppointments.Final.Project.model.dao.DoctorDao;
 import com.drAppointments.Final.Project.model.dao.PatientDao;
+import com.drAppointments.Final.Project.service.PatientService;
 import com.drAppointments.Final.Project.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,8 +16,11 @@ public class UserController {
 
     private UserService userService;
 
-    public UserController(UserService userService) {
+    private PatientService patientService;
+
+    public UserController(UserService userService, PatientService patientService) {
         this.userService = userService;
+        this.patientService = patientService;
     }
 
     //widok newpatient.html
@@ -29,9 +33,16 @@ public class UserController {
     @PostMapping("/addpatient")
     public String addNewPatient(@ModelAttribute PatientDao user) {
         System.out.println(user.toString());
-        userService.addNewPatient(user);
-        return "redirect:index";
+        patientService.addNewPatient(user);
+        return "redirect:patient";
     }
+
+//    // widok zalogowanego pacjenta
+//    @GetMapping("/patient")
+//    public ModelAndView getLoggedPatientView() {
+//        return new ModelAndView("patient", "patient",
+//                patientService.getNameAndSurnameLoggedUser());
+//    }
 
     //widok newdoctor.html
     @GetMapping("/adddoctor")

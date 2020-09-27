@@ -1,5 +1,7 @@
 package com.drAppointments.Final.Project.controller;
 
+import com.drAppointments.Final.Project.model.dao.PatientDao;
+import com.drAppointments.Final.Project.service.PatientService;
 import com.drAppointments.Final.Project.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -7,17 +9,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Map;
+
 @Controller
 public class AuthenticationController {
 
     @Autowired
     UserService userService;
 
+    @Autowired
+    PatientService patientService;
+
+
     @RequestMapping(value = "/patient", method = RequestMethod.GET)
     public ModelAndView patientHome() {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("patient");
-        return modelAndView;
+        return new ModelAndView("patient", "patient",
+                patientService.getNameAndSurnameLoggedUser());
     }
 
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
@@ -26,5 +33,10 @@ public class AuthenticationController {
         modelAndView.setViewName("admin");
         return modelAndView;
     }
-
+    @RequestMapping(value = "/doctor", method = RequestMethod.GET)
+    public ModelAndView doctorHome() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("doctor");
+        return modelAndView;
 }
+    }

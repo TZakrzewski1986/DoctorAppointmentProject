@@ -3,6 +3,7 @@ package com.drAppointments.Final.Project.controller;
 import com.drAppointments.Final.Project.model.dao.AdminDao;
 import com.drAppointments.Final.Project.model.dao.DoctorDao;
 import com.drAppointments.Final.Project.model.dao.PatientDao;
+import com.drAppointments.Final.Project.service.PatientService;
 import com.drAppointments.Final.Project.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,8 +16,11 @@ public class UserController {
 
     private UserService userService;
 
-    public UserController(UserService userService) {
+    private PatientService patientService;
+
+    public UserController(UserService userService, PatientService patientService) {
         this.userService = userService;
+        this.patientService = patientService;
     }
 
     //widok newpatient.html
@@ -28,13 +32,17 @@ public class UserController {
     //dodanie poprzez stronę nowego pacjenta
     @PostMapping("/addpatient")
     public String addNewPatient(@ModelAttribute PatientDao user) {
-        System.out.println(user.getName() + " " + user.getSurname() + " " +
-                user.getPesel() + " " + user.getGender() + " " + user.getCity() + " " +
-                user.getPhone() + " " + user.getEmail() + " " + user.getLogin() + " " +
-                user.getPassword());
-        userService.addNewPatient(user);
-        return "redirect:index";
+        System.out.println(user.toString());
+        patientService.addNewPatient(user);
+        return "redirect:patient";
     }
+
+//    // widok zalogowanego pacjenta
+//    @GetMapping("/patient")
+//    public ModelAndView getLoggedPatientView() {
+//        return new ModelAndView("patient", "patient",
+//                patientService.getNameAndSurnameLoggedUser());
+//    }
 
     //widok newdoctor.html
     @GetMapping("/adddoctor")
@@ -45,10 +53,7 @@ public class UserController {
     //dodanie poprzez stronę nowego lekarza
     @PostMapping("/adddoctor")
     public String addNewDoctor(@ModelAttribute DoctorDao user) {
-        System.out.println(user.getName() + " " + user.getSurname() + " " +
-                user.getPesel() + " " + user.getGender() + " " + user.getMedicalSpecialization() + " " +
-                user.getCity() + " " + user.getPhone() + " " + user.getEmail() + " " + user.getLogin() + " " +
-                user.getPassword());
+        System.out.println(user.toString());
         userService.addNewDoctor(user);
         return "redirect:index";
     }
@@ -62,8 +67,7 @@ public class UserController {
     //dodanie poprzez stronę nowego admina
     @PostMapping("/addadmin")
     public String addNewAdmin(@ModelAttribute AdminDao user) {
-        System.out.println(user.getName() + " " + user.getSurname() + " " +
-                user.getLogin() + " " + user.getPassword());
+        System.out.println(user.toString());
         userService.addNewAdmin(user);
         return "redirect:index";
     }

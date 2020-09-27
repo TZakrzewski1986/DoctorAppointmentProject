@@ -119,6 +119,12 @@ public class DoctorDao extends UserSec {
     public void setWorkingHours(List<WorkDay> workingHours) {
         this.workingHours = workingHours;
     }
+
+    @Override
+    public String toString() {
+        return id + name + surname + pesel + gender + city +
+                medicalSpecialization + phone + email;
+    }
 }
 
 

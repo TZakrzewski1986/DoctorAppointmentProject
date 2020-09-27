@@ -76,8 +76,9 @@ public class UserService {
         adminRepository.save(adminDao);
     }
 
-    @Scheduled(initialDelay = 10000L, fixedDelay = 10000L)
-    public void test(){
-        System.out.println("testing scheduling");
-    }
+//    //do wywoływania metody cyklicznie
+//    @Scheduled(initialDelay = 10000L, fixedDelay = 10000L)
+//    public void test(){
+//        System.out.println("testing scheduling");
+//    }
 }

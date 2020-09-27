@@ -2,6 +2,7 @@ package com.drAppointments.Final.Project.service;
 
 import com.drAppointments.Final.Project.model.dao.DoctorDao;
 import com.drAppointments.Final.Project.model.dao.PatientDao;
+import com.drAppointments.Final.Project.model.dao.SpecializationDao;
 import com.drAppointments.Final.Project.repository.AppointmentRepository;
 import com.drAppointments.Final.Project.repository.DoctorRepository;
 import com.drAppointments.Final.Project.repository.PatientRepository;
@@ -55,8 +56,8 @@ public class PatientService {
                 .orElse(login);
     }
 
-    public List<DoctorDao> getDoctorByMedicalSpecialization(String medSpec){
-        return doctorRepository.getDoctorByMedicalSpecialization(medSpec);
+    public List<DoctorDao> getDoctorByMedicalSpecialization(SpecializationDao medicalSpecialization){
+        return doctorRepository.getDoctorByMedicalSpecialization(medicalSpecialization);
     }
 
     public Optional<DoctorDao> getDoctorByNameAndSurname(String name, String surname){

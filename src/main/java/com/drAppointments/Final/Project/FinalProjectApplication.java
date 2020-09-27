@@ -8,7 +8,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @EnableJpaRepositories(basePackageClasses = AdminRepository.class)
-@EnableScheduling
+//@EnableScheduling // do wywoływania emtody cyklicznie, reszta w UseService
 public class FinalProjectApplication {
 
 	public static void main(String[] args) {

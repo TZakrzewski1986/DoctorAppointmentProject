@@ -13,7 +13,7 @@
     display: block;
     color: black;
     text-align: center;
-    padding: 14px 16px;
+    padding: 14px 14px;
     text-decoration: none;
     font-size: 17px;
 }
@@ -68,7 +68,7 @@
         display: block;
         text-align: left;
         width: 100%;
-        margin: 0;
+        margin: auto;
         padding: 14px;
     }
     .topnav input[type=text] {

@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <title>Przychodnia</title>
     <link type="text/css" rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <style>
     img {
     display: block;
@@ -15,33 +16,30 @@
 </head>
 <body>
 <h1>
-    <div class="topnav">
-        <a class="active" href="/addadmin">Admin</a>
-        <a class="active" href="/adddoctor">Rejestracja nowego lekarza</a>
-        <a class="active" href="/addpatient">Rejestracja nowego pacjenta</a>
-        <div class="active">
-            <a href="patient" th:action="@{/patient}" method="get">
-                <input type="submit" value="Panel Pacjenta"/>
-            </a>
-        </div>
-        <div class="login-container">
-            <form>
-
-            </form>
-            <form th:action="@{/login-process}" method="post">
-                <button type="submit">Login</button>
-            </form>
-        </div>
+    <div class="topnav" style="text-align: right">
+        <span>Czy masz już konto?</span>
+        <a class="active" href="/newuser"> Rejestracja</a>
+        <a class="active" href="/user">Logowanie</a>
+<!--        <a class="login-container">-->
+<!--                <form th:action="@{/login-process}" method="post">-->
+<!--                    <button type="submit">Login</button>-->
+<!--                </form>-->
+<!--            </a>-->
     </div>
+</h1>
 
-    <img th:src="@{images/clinica.jpg}" class="img-fluid" alt="Logo przychodni" style="width:25%;">
+    <!--        <a class="active" href="/addadmin">Admin</a>-->
+    <!--        <a class="active" href="/adddoctor">Rejestracja nowego lekarza</a>-->
+    <!--        <a class="active" href="/addpatient">Rejestracja nowego pacjenta</a>-->
+
+
+    <img src="../static/images/clinica.jpg" class="img-fluid" alt="Logo przychodni" style="width:25%;">
 
 </h1>
 
-<h3 class="display-1">
+<h3 class="display-1" style="text-align: center">
     Przychodnia
     <small class="text-muted">"Zawsze nogami do przodu"</small></h3>
-
 
 
 </body>
